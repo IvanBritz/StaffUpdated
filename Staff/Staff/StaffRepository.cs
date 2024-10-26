@@ -14,13 +14,6 @@ namespace Staff
     {
         private readonly DatabaseConn _databaseConn = DatabaseConn.getInstance();
 
-        public event EventHandler DataChanged;
-
-        protected virtual void OnDataChanged()
-        {
-            DataChanged?.Invoke(this, EventArgs.Empty);
-        }
-
         public DataTable GetAllStaff()
         {
             string query = "SELECT StaffID, StaffName, BaseSalary FROM Staff";
@@ -72,7 +65,6 @@ namespace Staff
                 }
 
                 cmd.ExecuteNonQuery();
-                OnDataChanged();
                 MessageBox.Show("Staff updated successfully.");
             }
         }
@@ -91,7 +83,7 @@ namespace Staff
 
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Staff deleted successfully.");
-                OnDataChanged();
+                
             }
         }
 

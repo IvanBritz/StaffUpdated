@@ -40,7 +40,7 @@ namespace Staff
             CellDoubleClick c = CellDoubleClick.GetInstance();
             StaffDetailsPopup p = StaffDetailsPopup.GetInstance();
             c.Perform(dataGridView1, p, e);
-            LoadData();
+            
             
         }
 
@@ -49,14 +49,14 @@ namespace Staff
         {
             TextBoxFilter t = TextBoxFilter.GetInstance();
             t.Perform(tbSearch, dataGridView1, _staffRepo);
-            LoadData();
+            
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             CellendEdit c = CellendEdit.GetInstance();
             c.Perform(dataGridView1, _staffRepo,e);
-            LoadData();
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
