@@ -56,7 +56,7 @@ namespace Staff
 
             s.AddStaffToDatabase(StaffName, roleID, BaseSalary,username,Password);
 
-            mainForm.LoadStaffData();
+            mainForm.LoadData();
             MessageBox.Show("Added Successfully");
             this.Close();
         }
