@@ -8,7 +8,6 @@ namespace Staff
         public Form1()
         {
             InitializeComponent();
-            _staffRepo.DataChanged += (s, e) => LoadData();
             LoadData();
             dataGridView1.CellEndEdit += dataGridView1_CellEndEdit;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
@@ -33,12 +32,16 @@ namespace Staff
         {
             CellContentClick c = CellContentClick.GetInstance();
             c.Perform(dataGridView1,_staffRepo,e);
+            LoadData();
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             CellDoubleClick c = CellDoubleClick.GetInstance();
-            c.Perform(dataGridView1, _staffRepo, e);
+            StaffDetailsPopup p = StaffDetailsPopup.GetInstance();
+            c.Perform(dataGridView1, p, e);
+            LoadData();
+            
         }
 
         
@@ -46,12 +49,14 @@ namespace Staff
         {
             TextBoxFilter t = TextBoxFilter.GetInstance();
             t.Perform(tbSearch, dataGridView1, _staffRepo);
+            LoadData();
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             CellendEdit c = CellendEdit.GetInstance();
             c.Perform(dataGridView1, _staffRepo,e);
+            LoadData();
         }
 
         private void label1_Click(object sender, EventArgs e)

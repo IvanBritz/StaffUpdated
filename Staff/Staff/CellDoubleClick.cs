@@ -22,12 +22,12 @@ namespace Staff
         return instance; 
         }  
 
-        public void Perform(DataGridView dataGridView1, StaffRepository _staffRepo, DataGridViewCellEventArgs e)
+        public void Perform(DataGridView dataGridView1, StaffDetailsPopup popup, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 int staffID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["StaffID"].Value);
-                _staffRepo.ShowStaffDetailsPopup(staffID);
+                popup.ShowStaffDetailsPopup(staffID);
             }
         }
     }

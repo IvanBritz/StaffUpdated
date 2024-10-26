@@ -29,7 +29,8 @@ namespace Staff
             if (string.IsNullOrEmpty(searchValue))
             {
                 dataGridView1.DataSource = _staffRepo.GetAllStaff();
-                _staffRepo.FormatDataGridView(dataGridView1);
+                FormatDataGridView f = FormatDataGridView.GetInstance();
+                f.Perform(dataGridView1);
             }
             else
             {
